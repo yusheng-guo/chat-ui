@@ -22,12 +22,15 @@ class ProfileUpload extends StatelessWidget {
           onTap: () {},
           child: Stack(
             fit: StackFit.expand,
-            children: const [
+            children: [
               CircleAvatar(
                 backgroundColor: Colors.transparent,
-                backgroundImage: AssetImage('assets/avatar.png'),
+                // backgroundImage: AssetImage('assets/avatar.png'),
+                child: Icon(Icons.person_outline_rounded,
+                    size: 126.0,
+                    color: isLightTheme(context) ? kIconLight : Colors.black),
               ),
-              Align(
+              const Align(
                 alignment: Alignment.bottomRight,
                 child: Icon(
                   Icons.add_a_photo,

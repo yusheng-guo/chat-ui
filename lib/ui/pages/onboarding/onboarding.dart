@@ -3,6 +3,7 @@ import 'package:flutter/src/animation/animation_controller.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter/src/widgets/ticker_provider.dart';
+import 'package:talk/colors.dart';
 
 import '../../widgets/onboarding/logo.dart';
 import '../../widgets/onboarding/profile_upload.dart';
@@ -50,11 +51,41 @@ class _OnboardingState extends State<Onboarding>
               Padding(
                 padding: const EdgeInsets.only(left: 20.0, right: 20.0),
                 child: CustomTextField(
-                  hint: 'xxx',
-                  onchanged: () {},
-                  inputAction: null,
+                  hint: 'Wah yuh name?',
+                  height: 45.0,
+                  inputAction: TextInputAction.done,
+                  onchanged: (String val) {},
                 ),
               ),
+              const SizedBox(height: 30),
+              Padding(
+                padding: const EdgeInsets.only(
+                  left: 16.0,
+                  right: 16.0,
+                ),
+                child: ElevatedButton(
+                  onPressed: () {},
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: kPrimary,
+                      elevation: 5.0,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(45.0),
+                      )),
+                  child: Container(
+                    height: 45.0,
+                    alignment: Alignment.center,
+                    child: Text(
+                      'Mek wi chat!',
+                      style: Theme.of(context).textTheme.labelLarge?.copyWith(
+                            fontSize: 18.0,
+                            color: const Color(0xFF3E2723),
+                            fontWeight: FontWeight.bold,
+                          ),
+                    ),
+                  ),
+                ),
+              ),
+              const Spacer(flex: 2)
             ],
           ),
         ),

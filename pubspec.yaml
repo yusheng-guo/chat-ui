@@ -37,6 +37,12 @@ dependencies:
   cupertino_icons: ^1.0.2
   web_socket_channel: ^2.3.0
   google_fonts: ^4.0.3
+  flutter_bloc: ^8.1.2
+  equatable: ^2.0.5
+  shared_preferences: ^2.0.20
+  image_picker: ^0.8.7
+  encrypt: ^5.0.1
+  dio: ^5.0.3
 
 dev_dependencies:
   flutter_test:
