@@ -5,8 +5,7 @@ import 'package:image_picker/image_picker.dart';
 
 class ProfileImageCubit extends Cubit<File> {
   final _picker = ImagePicker();
-
-  ProfileImageCubit(super.initialState);
+  ProfileImageCubit() : super(File(''));
 
   Future<void> getImage() async {
     PickedFile? image = (await _picker.pickImage(

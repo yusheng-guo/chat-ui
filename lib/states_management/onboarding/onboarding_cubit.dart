@@ -1,6 +1,5 @@
 import 'dart:io';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:talk/cache/local_cache.dart';
 import 'package:talk/models/user.dart';
 import 'package:talk/services/image/image_uploader.dart';
 import 'package:talk/services/user/user_service_contract.dart';
@@ -9,8 +8,7 @@ import 'package:talk/states_management/onboarding/onboarding_state.dart';
 class OnboardingCubit extends Cubit<OnboardingState> {
   final IUserService _userService;
   final ImageUploader _imageUploader;
-  final LocalCache _localCache;
-  OnboardingCubit(this._userService, this._imageUploader, this._localCache)
+  OnboardingCubit(this._userService, this._imageUploader)
       : super(OnboardingInitial());
 
   Future<void> connect(String name, File profileImage) async {
@@ -22,14 +20,14 @@ class OnboardingCubit extends Cubit<OnboardingState> {
       active: true,
       lastseen: DateTime.now(),
     );
-    final createdUser = await _userService.connect(user);
-    final userJson = {
-      'username': createdUser.username,
-      'active': true,
-      'photo_url': createdUser.photoUrl,
-      'id': createdUser.id
-    };
-    await _localCache.save('USER', userJson);
-    emit(OnboardingSuccess(createdUser));
+    await _userService.connect(user);
+    // final userJson = {
+    //   'username': createdUser.username,
+    //   'active': true,
+    //   'photo_url': createdUser.photoUrl,
+    //   'id': createdUser.id
+    // };
+    // await _localCache.save('USER', userJson);
+    emit(OnboardingSuccess(user));
   }
 }

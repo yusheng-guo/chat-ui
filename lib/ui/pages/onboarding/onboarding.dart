@@ -1,13 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/animation/animation_controller.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:flutter/src/widgets/ticker_provider.dart';
 import 'package:talk/colors.dart';
-
-import '../../widgets/onboarding/logo.dart';
-import '../../widgets/onboarding/profile_upload.dart';
-import '../../widgets/shared/Custom_text_field.dart';
+import 'package:talk/ui/widgets/onboarding/logo.dart';
+import 'package:talk/ui/widgets/onboarding/profile_upload.dart';
+import 'package:talk/ui/widgets/shared/custom_text_field.dart';
 
 class Onboarding extends StatefulWidget {
   const Onboarding({super.key});
