@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:talk/colors.dart';
 import 'package:talk/theme.dart';
 
@@ -19,16 +17,21 @@ class ProfileUpload extends StatelessWidget {
         borderRadius: BorderRadius.circular(126.0),
         child: InkWell(
           borderRadius: BorderRadius.circular(126.0),
+          // onTap: () async {
+          //   await context.read<ProfileImageCubit>().getImage(context);
+          // },
           onTap: () {},
           child: Stack(
             fit: StackFit.expand,
             children: [
               CircleAvatar(
                 backgroundColor: Colors.transparent,
-                // backgroundImage: AssetImage('assets/avatar.png'),
-                child: Icon(Icons.person_outline_rounded,
-                    size: 126.0,
-                    color: isLightTheme(context) ? kIconLight : Colors.black),
+                backgroundImage: const AssetImage('assets/avatar.png'),
+                child: Icon(
+                  Icons.person_outline_rounded,
+                  size: 126.0,
+                  color: isLightTheme(context) ? kIconLight : Colors.black,
+                ),
               ),
               const Align(
                 alignment: Alignment.bottomRight,

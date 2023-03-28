@@ -5,7 +5,6 @@ import 'package:talk/services/image/image_uploader.dart';
 import 'package:talk/services/user/user_service_contract.dart';
 import 'package:talk/services/user/user_service_impl.dart';
 import 'package:talk/states_management/onboarding/onboarding_cubit.dart';
-import 'package:talk/states_management/onboarding/profile_image_cubit.dart';
 import 'package:talk/ui/pages/onboarding/onboarding.dart';
 
 class CompositionRoot {
@@ -22,11 +21,11 @@ class CompositionRoot {
 
     OnboardingCubit onboradingCubit =
         OnboardingCubit(_userService, imageUploader);
-    ProfileImageCubit imageCubit = ProfileImageCubit();
+    // ProfileImageCubit imageCubit = ProfileImageCubit();
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: ((context) => onboradingCubit)),
-        BlocProvider(create: ((context) => imageCubit)),
+        // BlocProvider(create: ((context) => imageCubit)),
       ],
       child: const Onboarding(),
     );
