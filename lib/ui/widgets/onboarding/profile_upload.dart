@@ -1,8 +1,4 @@
-import 'dart:developer';
-import 'dart:io';
-
 import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:talk/colors.dart';
 import 'package:talk/theme.dart';
 

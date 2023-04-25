@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:talk/theme.dart';
-import 'package:talk/ui/composition_root.dart';
+import 'package:talk/ui/pages/login/login.dart';
+import 'package:talk/ui/pages/onboarding/onboarding.dart';
+
+import 'ui/pages/profile/profile.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await CompositionRoot.configure();
   runApp(const MyApp());
 }
 
@@ -18,8 +20,8 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: lightTheme(context),
       darkTheme: darkTheme(context),
-      // home: const Onboarding(),
-      home: CompositionRoot.composeOnboardingUI(),
+      // home: const OnBoarding(),
+      home: const Login(),
     );
   }
 }
