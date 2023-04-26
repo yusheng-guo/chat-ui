@@ -169,7 +169,7 @@ class _SignUpFormState extends State<SignUpForm> {
   void _submitForm() async {
     if (_formKey.currentState!.validate()) {
       print('Email: $_email, Password: $_password');
-      _showAlertDialog(await Register(_email, _password));
+      _showAlertDialog(await register(_email, _password));
     }
   }
 
@@ -246,7 +246,7 @@ class _SignUpFormState extends State<SignUpForm> {
 }
 
 // 用户登录
-Future<String> Register(String email, String password) async {
+Future<String> register(String email, String password) async {
   // 设置请求URL
   final url = Uri.parse('http://127.0.0.1:8080/v1/register');
 
@@ -266,9 +266,4 @@ Future<String> Register(String email, String password) async {
 
   // 解析响应数据
   return jsonDecode(response.body)["message"];
-  // if (response.statusCode == 200) {
-  //   print('Response body: ${response.body}');
-  // } else {
-  //   print('Request failed with status: ${response.statusCode}.');
-  // }
 }

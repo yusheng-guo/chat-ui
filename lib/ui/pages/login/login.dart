@@ -194,7 +194,7 @@ class _LogInFormState extends State<LogInForm> {
   void _submitForm() async {
     if (_formKey.currentState!.validate()) {
       print('Email: $_email, Password: $_password');
-      _showAlertDialog(await Login(_email, _password));
+      _showAlertDialog(await login(_email, _password));
     }
   }
 
@@ -271,7 +271,7 @@ class _LogInFormState extends State<LogInForm> {
 }
 
 // 用户登录
-Future<String> Login(String email, String password) async {
+Future<String> login(String email, String password) async {
   // 设置请求URL
   final url = Uri.parse('http://127.0.0.1:8080/v1/login');
 
@@ -291,9 +291,4 @@ Future<String> Login(String email, String password) async {
 
   // 解析响应数据
   return jsonDecode(response.body)["message"];
-  // if (response.statusCode == 200) {
-  //   return jsonDecode(response.body)["message"];
-  // } else {
-  //   return ('Request failed with status: ${response.statusCode}.');
-  // }
 }
