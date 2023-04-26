@@ -1,13 +1,17 @@
+import 'dart:convert';
+import 'package:adaptive_dialog/adaptive_dialog.dart';
+import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
+import 'package:talk/colors.dart';
 
-class Login extends StatefulWidget {
-  const Login({super.key});
+class LoginScreen extends StatefulWidget {
+  const LoginScreen({super.key});
 
   @override
-  State<Login> createState() => _LoginState();
+  State<LoginScreen> createState() => _LoginScreenState();
 }
 
-class _LoginState extends State<Login> {
+class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     double heightOfScreen = MediaQuery.of(context).size.height;
@@ -15,7 +19,13 @@ class _LoginState extends State<Login> {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
-        backgroundColor: const Color(0xFF00008B),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back_ios),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
+        backgroundColor: kPrimary,
         actions: <Widget>[
           IconButton(icon: const Icon(Icons.settings), onPressed: () {})
         ],
@@ -46,7 +56,7 @@ class _LoginState extends State<Login> {
                 child: Container(
                   height: heightOfScreen,
                   decoration: const BoxDecoration(
-                    color: Color(0xFF00008B),
+                    color: kPrimary,
                   ),
                 ),
               ),
@@ -59,10 +69,10 @@ class _LoginState extends State<Login> {
                   SizedBox(height: heightOfScreen * 0.075),
                   const IntroText(),
                   const SizedBox(height: 8),
-                  LogInForm(),
+                  const LogInForm(),
                 ],
               ),
-            )
+            ),
           ],
         ),
       ),
@@ -124,7 +134,6 @@ class IntroText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    TextTheme textTheme = Theme.of(context).textTheme;
     double heightOfScreen = MediaQuery.of(context).size.height;
     return ListBody(
       children: <Widget>[
@@ -171,7 +180,7 @@ class IntroText extends StatelessWidget {
 
 // 登录表单
 class LogInForm extends StatefulWidget {
-  LogInForm({super.key});
+  const LogInForm({super.key});
 
   @override
   State<LogInForm> createState() => _LogInFormState();
@@ -179,13 +188,24 @@ class LogInForm extends StatefulWidget {
 
 class _LogInFormState extends State<LogInForm> {
   final _formKey = GlobalKey<FormState>();
-  String _username = '';
+  String _email = '';
   String _password = '';
 
-  void _submitForm() {
+  void _submitForm() async {
     if (_formKey.currentState!.validate()) {
-      print('Username: $_username, Password: $_password');
+      print('Email: $_email, Password: $_password');
+      _showAlertDialog(await Login(_email, _password));
     }
+  }
+
+  // 显示对话框
+  void _showAlertDialog(String message) async {
+    await showOkAlertDialog(
+      context: context,
+      title: 'Message',
+      message: message,
+      okLabel: 'OK',
+    );
   }
 
   @override
@@ -193,7 +213,6 @@ class _LogInFormState extends State<LogInForm> {
     return Form(
       key: _formKey,
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
           TextFormField(
             keyboardType: TextInputType.emailAddress,
@@ -203,15 +222,13 @@ class _LogInFormState extends State<LogInForm> {
               prefixIcon: Icon(Icons.email),
             ),
             validator: (value) {
-              if (value?.isEmpty == true) {
-                return 'Please enter your email.';
+              if (value == null || value.isEmpty) {
+                return 'Please enter your email';
               }
               return null;
             },
-            onSaved: (value) {
-              if (value != null) {
-                _username = value.trim();
-              }
+            onChanged: (value) {
+              _email = value.trim();
             },
           ),
           const SizedBox(height: 16.0),
@@ -224,24 +241,59 @@ class _LogInFormState extends State<LogInForm> {
               prefixIcon: Icon(Icons.password),
             ),
             validator: (value) {
-              if (value?.isEmpty == true) {
-                return 'Please enter your password.';
+              if (value == null || value.isEmpty) {
+                return 'Please enter your password';
               }
               return null;
             },
-            onSaved: (value) {
-              if (value != null) {
-                _password = value.trim();
-              }
+            onChanged: (value) {
+              _password = value.trim();
             },
           ),
           const SizedBox(height: 16.0),
-          MaterialButton(
-            onPressed: _submitForm,
-            child: const Text('Log In'),
+          ElevatedButton(
+            onPressed: () {
+              _submitForm();
+            },
+            style: ElevatedButton.styleFrom(
+              backgroundColor: kPrimary,
+              fixedSize: const Size(250.0, 40.0),
+            ),
+            child: const Text(
+              "Log In",
+              style: TextStyle(fontWeight: FontWeight.bold),
+            ),
           ),
         ],
       ),
     );
   }
+}
+
+// 用户登录
+Future<String> Login(String email, String password) async {
+  // 设置请求URL
+  final url = Uri.parse('http://127.0.0.1:8080/v1/login');
+
+  // 设置请求头
+  final headers = <String, String>{
+    'Content-Type': 'application/json; charset=UTF-8',
+  };
+
+  // 设置请求体（以JSON格式发送）
+  final body = jsonEncode(<String, String>{
+    'email': email,
+    'password': password,
+  });
+
+  // 发送POST请求
+  final response = await http.post(url, headers: headers, body: body);
+
+  // 解析响应数据
+  return jsonDecode(response.body)["message"];
+  // if (response.statusCode == 200) {
+  //   return jsonDecode(response.body)["message"];
+  // } else {
+  //   return ('Request failed with status: ${response.statusCode}.');
+  // }
 }

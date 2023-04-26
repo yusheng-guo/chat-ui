@@ -45,6 +45,11 @@ dependencies:
   dio: ^5.0.3
   smooth_page_indicator: ^1.1.0
   feather_icons_flutter: ^4.7.4
+  flutter_easyloading: ^3.0.5
+  auto_route: ^6.3.0
+  flutter_localizations:
+    sdk: flutter
+  adaptive_dialog: ^1.8.3
 
 dev_dependencies:
   flutter_test:

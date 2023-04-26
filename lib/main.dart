@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:talk/theme.dart';
-import 'package:talk/ui/pages/login/login.dart';
 import 'package:talk/ui/pages/onboarding/onboarding.dart';
-
-import 'ui/pages/profile/profile.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -16,12 +14,16 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      localizationsDelegates: const [
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
       title: 'Talk',
       debugShowCheckedModeBanner: false,
       theme: lightTheme(context),
       darkTheme: darkTheme(context),
-      // home: const OnBoarding(),
-      home: const Login(),
+      home: const OnBoarding(),
     );
   }
 }

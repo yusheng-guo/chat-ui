@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:talk/ui/pages/login/login.dart';
+import 'package:talk/ui/pages/signup/signup.dart';
 import 'package:talk/ui/widgets/onboarding_background.dart/onboarding_background.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
@@ -33,6 +35,10 @@ class _OnBoardingState extends State<OnBoarding> {
                   heading: 'Over 50 Countries',
                   image: 'assets/images/3.png',
                 ),
+                OnBoardingBackground(
+                  heading: 'Over 50 Countries',
+                  image: 'assets/images/4.png',
+                ),
               ],
             ),
             SafeArea(
@@ -40,38 +46,47 @@ class _OnBoardingState extends State<OnBoarding> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    const Spacer(),
                     SmoothPageIndicator(
                       controller: controller,
-                      count: 3,
+                      count: 4,
                     ),
                     const SizedBox(height: 20),
                     ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => LoginScreen()),
+                        );
+                      },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.blueAccent,
                         fixedSize: const Size(250.0, 40.0),
                       ),
                       child: const Text(
-                        "Login",
+                        "Log In",
                         style: TextStyle(fontWeight: FontWeight.bold),
                       ),
                     ),
                     const SizedBox(height: 8),
                     ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const SignupScreen()),
+                        );
+                      },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.redAccent,
                         fixedSize: const Size(250.0, 40.0),
                       ),
                       child: const Text(
-                        "SignUp",
+                        "Sign Up",
                         style: TextStyle(fontWeight: FontWeight.bold),
                       ),
                     ),
-                    const SizedBox(
-                      height: 30,
-                    )
+                    const SizedBox(height: 30)
                   ],
                 ),
               ),
