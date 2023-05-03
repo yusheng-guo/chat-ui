@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:talk/theme.dart';
-import 'package:talk/ui/pages/onboarding/onboarding.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:talk/ui/screens/home/home.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -23,7 +23,9 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: lightTheme(context),
       darkTheme: darkTheme(context),
-      home: const OnBoarding(),
+      // home: const OnBoarding(),
+      home: const HomePage(),
+      // home: Expanded(child: ChatViewWidget()),
     );
   }
 }

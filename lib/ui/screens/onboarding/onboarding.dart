@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:talk/ui/pages/login/login.dart';
-import 'package:talk/ui/pages/signup/signup.dart';
-import 'package:talk/ui/widgets/onboarding_background.dart/onboarding_background.dart';
+import 'package:talk/ui/screens/login/login.dart';
+import 'package:talk/ui/screens/signup/signup.dart';
+import 'package:talk/ui/widgets/onboarding/onboarding_background.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class OnBoarding extends StatefulWidget {
