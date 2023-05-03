@@ -1,43 +1,29 @@
 import 'package:flutter/material.dart';
-import 'package:talk/models/dialog.dart';
+import 'package:talk/models/session.dart';
 import 'package:talk/ui/screens/chat/chat.dart';
+import 'package:talk/utils/format_date.dart';
 
-class DialogWidget extends StatefulWidget {
-  // String name;
-  // String text;
-  // String image;
-  // String time;
-  // int unReadMessageCount;
-
-  // DialogWidget({
-  //   super.key,
-  //   required this.name,
-  //   required this.text,
-  //   required this.image,
-  //   required this.time,
-  //   this.unReadMessageCount = 0,
-  // });
-
-  DialogM d;
-  DialogWidget({
+class SessionWidget extends StatefulWidget {
+  Session s;
+  SessionWidget({
     super.key,
-    required this.d,
+    required this.s,
   });
 
   @override
-  _DialogWidgetState createState() => _DialogWidgetState();
+  _SessionWidgetState createState() => _SessionWidgetState();
 }
 
-class _DialogWidgetState extends State<DialogWidget> {
+class _SessionWidgetState extends State<SessionWidget> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
         setState(() {
-          widget.d.read();
+          widget.s.read();
         });
         Navigator.push(context, MaterialPageRoute(builder: (context) {
-          return ChatPage(d: widget.d);
+          return ChatPage(d: widget.s);
         }));
       },
       child: Container(
@@ -48,7 +34,7 @@ class _DialogWidgetState extends State<DialogWidget> {
               child: Row(
                 children: <Widget>[
                   CircleAvatar(
-                    backgroundImage: AssetImage(widget.d.image),
+                    backgroundImage: AssetImage(widget.s.image),
                     maxRadius: 30,
                   ),
                   const SizedBox(
@@ -61,18 +47,18 @@ class _DialogWidgetState extends State<DialogWidget> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
                           Text(
-                            widget.d.name,
+                            widget.s.name,
                             style: const TextStyle(fontSize: 16),
                           ),
                           const SizedBox(
                             height: 6,
                           ),
                           Text(
-                            widget.d.text,
+                            widget.s.text,
                             style: TextStyle(
-                                fontSize: 13,
+                                fontSize: 12,
                                 color: Colors.grey.shade600,
-                                fontWeight: widget.d.unReadMessageCount == 0
+                                fontWeight: widget.s.unReadMessageCount == 0
                                     ? FontWeight.bold
                                     : FontWeight.normal),
                           ),
@@ -87,26 +73,27 @@ class _DialogWidgetState extends State<DialogWidget> {
               crossAxisAlignment: CrossAxisAlignment.end,
               children: <Widget>[
                 Text(
-                  widget.d.time,
+                  // widget.s.timestrap.toString(),
+                  formatDateTime(widget.s.timestrap),
                   style: TextStyle(
                       fontSize: 12,
-                      fontWeight: widget.d.unReadMessageCount == 0
+                      fontWeight: widget.s.unReadMessageCount == 0
                           ? FontWeight.bold
                           : FontWeight.normal),
                 ),
                 const SizedBox(
                   height: 6,
                 ),
-                widget.d.unReadMessageCount == 0
+                widget.s.unReadMessageCount == 0
                     ? Container()
                     : Badge(
                         // label: Text("6"),
                         label: Text(
-                          widget.d.unReadMessageCount == 0
+                          widget.s.unReadMessageCount == 0
                               ? ''
-                              : '${widget.d.unReadMessageCount}',
+                              : '${widget.s.unReadMessageCount}',
                           style: TextStyle(
-                            fontWeight: widget.d.unReadMessageCount == 0
+                            fontWeight: widget.s.unReadMessageCount == 0
                                 ? FontWeight.normal
                                 : FontWeight.bold,
                           ),

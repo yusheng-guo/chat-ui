@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:talk/configure.dart';
 import 'package:talk/data/messages.dart';
-import 'package:talk/models/dialog.dart';
 import 'package:talk/models/message.dart';
+import 'package:talk/models/session.dart';
 
 class ChatPage extends StatefulWidget {
-  DialogM d;
+  Session d;
 
   ChatPage({
     super.key,
     required this.d,
   });
-  // const ChatPage({super.key});
 
   @override
   _ChatPageState createState() => _ChatPageState();
@@ -20,7 +20,7 @@ class _ChatPageState extends State<ChatPage> {
   final TextEditingController _textController = TextEditingController();
   final FocusNode _focusNode = FocusNode();
   final ScrollController _listController = ScrollController();
-
+  List<Message> _messages = messages;
   @override
   void initState() {
     super.initState();
@@ -57,12 +57,19 @@ class _ChatPageState extends State<ChatPage> {
 
   void _sendMessage(String text) {
     // 添加消息到列表
+    Message msg = Message(
+      sender: myid,
+      receiver: widget.d.id,
+      content: text,
+      timestamp: DateTime.now(),
+    );
+
     setState(() {
-      messages.add(
-        Message(content: text, type: "sender"),
-      );
+      _messages.add(msg);
     });
     // 消息发送到服务器
+
+    // 消息存储到本地数据库
   }
 
   void scrollToBottom() {
@@ -144,7 +151,7 @@ class _ChatPageState extends State<ChatPage> {
           Expanded(
             child: ListView.builder(
               controller: _listController,
-              itemCount: messages.length,
+              itemCount: _messages.length,
               shrinkWrap: true,
               padding: const EdgeInsets.only(top: 10, bottom: 10),
               physics: const BouncingScrollPhysics(),
@@ -153,19 +160,19 @@ class _ChatPageState extends State<ChatPage> {
                   padding: const EdgeInsets.only(
                       left: 14, right: 14, top: 10, bottom: 10),
                   child: Align(
-                    alignment: (messages[index].type == "receiver"
+                    alignment: (_messages[index].receiver == myid
                         ? Alignment.topLeft
                         : Alignment.topRight),
                     child: Container(
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(20),
-                        color: (messages[index].type == "receiver"
+                        color: (_messages[index].receiver == myid
                             ? Colors.grey.shade200
                             : Colors.blue[200]),
                       ),
                       padding: const EdgeInsets.all(16),
                       child: Text(
-                        messages[index].content,
+                        _messages[index].content,
                         style: const TextStyle(fontSize: 15),
                       ),
                     ),

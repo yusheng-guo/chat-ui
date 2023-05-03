@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:talk/data/dialogs.dart';
-import 'package:talk/ui/widgets/dialog/dialog_widget.dart';
+import 'package:talk/data/session.dart';
+import 'package:talk/ui/widgets/session/session_widget.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -67,7 +67,7 @@ class _HomePageState extends State<HomePage> {
                 //   time: dialogs[index].time,
                 //   unReadMessageCount: dialogs[index].unReadMessageCount,
                 // );
-                return DialogWidget(d: dialogs[index]);
+                return SessionWidget(s: dialogs[index]);
               },
               separatorBuilder: (BuildContext context, int index) {
                 return const Divider(

@@ -8,6 +8,8 @@ const appBarTheme = AppBarTheme(
   backgroundColor: Colors.white,
 );
 
+// SmileySans-Oblique
+
 final tabBarTheme = TabBarTheme(
   indicatorSize: TabBarIndicatorSize.label,
   unselectedLabelColor: Colors.black54,
@@ -29,6 +31,12 @@ ThemeData lightTheme(BuildContext context) => ThemeData.light().copyWith(
       iconTheme: const IconThemeData(color: kIconLight),
       textTheme: GoogleFonts.comfortaaTextTheme(Theme.of(context).textTheme)
           .apply(displayColor: Colors.black),
+      // textTheme: const TextTheme(
+      //   bodyLarge: TextStyle(
+      //     fontFamily: 'SmileySans',
+      //     fontSize: 16,
+      //     fontWeight: FontWeight.normal,
+      //     color: Colors.black,),
       visualDensity: VisualDensity.adaptivePlatformDensity,
     );
 
@@ -41,6 +49,14 @@ ThemeData darkTheme(BuildContext context) => ThemeData.dark().copyWith(
     iconTheme: const IconThemeData(color: Colors.black),
     textTheme: GoogleFonts.comfortaaTextTheme(Theme.of(context).textTheme)
         .apply(displayColor: Colors.white),
+    // textTheme: const TextTheme(
+    //   bodyLarge: TextStyle(
+    //     fontFamily: 'SmileySans',
+    //     fontSize: 16,
+    //     fontWeight: FontWeight.normal,
+    //     color: Colors.white,
+    //   ),
+    // ),
     visualDensity: VisualDensity.adaptivePlatformDensity);
 
 bool isLightTheme(BuildContext context) {

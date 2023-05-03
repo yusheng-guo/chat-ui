@@ -1,16 +1,18 @@
-class DialogM {
+class Session {
+  String id; // 发送者 ID
   String name; // 发送者姓名
   String text; // 最后一条消息
   String image; // 头像地址
-  String time; // 时间
+  DateTime timestrap; // 时间
   int unReadMessageCount;
-  String senderID = ""; // 消息发送者的用户ID
+  String sender = ""; // 消息发送者的用户ID
 
-  DialogM({
+  Session({
+    required this.id,
     required this.name,
     required this.text,
     required this.image,
-    required this.time,
+    required this.timestrap,
     this.unReadMessageCount = 0,
   });
 
