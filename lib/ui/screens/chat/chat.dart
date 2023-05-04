@@ -61,7 +61,7 @@ class _ChatPageState extends State<ChatPage> {
       sender: myid,
       receiver: widget.d.id,
       content: text,
-      timestamp: DateTime.now(),
+      createdAt: DateTime.now(),
     );
 
     setState(() {
