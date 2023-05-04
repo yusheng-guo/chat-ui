@@ -4,6 +4,7 @@ final now = DateTime.now(); // 获取当前时间
 
 List<Message> messages = [
   Message(
+    id: '',
     content: "Hello, Will",
     sender: '1e31ba81-07fd-4afb-9e38-fb19f0638c34',
     receiver: '5547abe4-386e-45c0-af0a-ad9cc9b82e59',
@@ -17,6 +18,7 @@ List<Message> messages = [
     ),
   ),
   Message(
+    id: '',
     content: "How have you been?",
     sender: '1e31ba81-07fd-4afb-9e38-fb19f0638c34',
     receiver: '5547abe4-386e-45c0-af0a-ad9cc9b82e59',
@@ -30,6 +32,7 @@ List<Message> messages = [
     ),
   ),
   Message(
+    id: '',
     content: "Hey Kriss, I am doing fine dude. wbu?",
     sender: '1e31ba81-07fd-4afb-9e38-fb19f0638c34',
     receiver: '5547abe4-386e-45c0-af0a-ad9cc9b82e59',
@@ -43,6 +46,7 @@ List<Message> messages = [
     ),
   ),
   Message(
+    id: '',
     content: "ehhhh, doing OK.",
     sender: '1e31ba81-07fd-4afb-9e38-fb19f0638c34',
     receiver: '5547abe4-386e-45c0-af0a-ad9cc9b82e59',
@@ -56,6 +60,7 @@ List<Message> messages = [
     ),
   ),
   Message(
+    id: '',
     content: "Is there any thing wrong?",
     sender: '1e31ba81-07fd-4afb-9e38-fb19f0638c34',
     receiver: '5547abe4-386e-45c0-af0a-ad9cc9b82e59',
@@ -69,6 +74,7 @@ List<Message> messages = [
     ),
   ),
   Message(
+    id: '',
     content: "Hello, Will",
     sender: '1e31ba81-07fd-4afb-9e38-fb19f0638c34',
     receiver: '5547abe4-386e-45c0-af0a-ad9cc9b82e59',
@@ -82,6 +88,7 @@ List<Message> messages = [
     ),
   ),
   Message(
+    id: '',
     content: "How have you been?",
     sender: '1e31ba81-07fd-4afb-9e38-fb19f0638c34',
     receiver: '5547abe4-386e-45c0-af0a-ad9cc9b82e59',
@@ -95,6 +102,7 @@ List<Message> messages = [
     ),
   ),
   Message(
+    id: '',
     content: "Hey Kriss, I am doing fine dude. wbu?",
     sender: '1e31ba81-07fd-4afb-9e38-fb19f0638c34',
     receiver: '5547abe4-386e-45c0-af0a-ad9cc9b82e59',
@@ -108,6 +116,7 @@ List<Message> messages = [
     ),
   ),
   Message(
+    id: '',
     content: "ehhhh, doing OK.",
     sender: '1e31ba81-07fd-4afb-9e38-fb19f0638c34',
     receiver: '5547abe4-386e-45c0-af0a-ad9cc9b82e59',
@@ -121,6 +130,7 @@ List<Message> messages = [
     ),
   ),
   Message(
+    id: '',
     content: "Is there any thing wrong?",
     sender: '1e31ba81-07fd-4afb-9e38-fb19f0638c34',
     receiver: '5547abe4-386e-45c0-af0a-ad9cc9b82e59',
@@ -134,6 +144,7 @@ List<Message> messages = [
     ),
   ),
   Message(
+    id: '',
     content: "Hello, Will",
     sender: '1e31ba81-07fd-4afb-9e38-fb19f0638c34',
     receiver: '5547abe4-386e-45c0-af0a-ad9cc9b82e59',
@@ -147,6 +158,7 @@ List<Message> messages = [
     ),
   ),
   Message(
+    id: '',
     content: "How have you been?",
     sender: '1e31ba81-07fd-4afb-9e38-fb19f0638c34',
     receiver: '5547abe4-386e-45c0-af0a-ad9cc9b82e59',
@@ -160,6 +172,7 @@ List<Message> messages = [
     ),
   ),
   Message(
+    id: '',
     content: "Hey Kriss, I am doing fine dude. wbu?",
     sender: '1e31ba81-07fd-4afb-9e38-fb19f0638c34',
     receiver: '5547abe4-386e-45c0-af0a-ad9cc9b82e59',
@@ -173,6 +186,7 @@ List<Message> messages = [
     ),
   ),
   Message(
+    id: '',
     content: "ehhhh, doing OK.",
     sender: '1e31ba81-07fd-4afb-9e38-fb19f0638c34',
     receiver: '5547abe4-386e-45c0-af0a-ad9cc9b82e59',
@@ -186,6 +200,7 @@ List<Message> messages = [
     ),
   ),
   Message(
+    id: '',
     content: "Is there any thing wrong?",
     sender: '1e31ba81-07fd-4afb-9e38-fb19f0638c34',
     receiver: '5547abe4-386e-45c0-af0a-ad9cc9b82e59',

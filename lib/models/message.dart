@@ -19,7 +19,7 @@ enum MessageType {
 }
 
 class Message {
-  String? id; // id
+  String id; // id
   String sender; // 发送者
   String receiver; // 接收者
   String content; // 消息内容
@@ -28,14 +28,14 @@ class Message {
   DateTime createdAt; // 创建时间
 
   Message({
+    required this.id,
     required this.sender,
     required this.receiver,
     required this.content,
     required this.createdAt,
     this.state = MessageStatus.messageStatusSent,
     this.type = MessageType.messageTypeText,
-    String? id,
-  }) : id = id ?? const Uuid().v4();
+  });
 
   // 辅助方法：将整数类型的枚举值转换为对应的枚举类型
   static T enumFromString<T>(Iterable<T> values, String valueStr) {

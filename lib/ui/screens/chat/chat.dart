@@ -3,6 +3,7 @@ import 'package:talk/configure.dart';
 import 'package:talk/data/messages.dart';
 import 'package:talk/models/message.dart';
 import 'package:talk/models/session.dart';
+import 'package:uuid/uuid.dart';
 
 class ChatPage extends StatefulWidget {
   Session d;
@@ -58,6 +59,7 @@ class _ChatPageState extends State<ChatPage> {
   void _sendMessage(String text) {
     // 添加消息到列表
     Message msg = Message(
+      id: const Uuid().v4(),
       sender: myid,
       receiver: widget.d.id,
       content: text,
