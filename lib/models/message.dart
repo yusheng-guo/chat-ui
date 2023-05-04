@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'package:uuid/uuid.dart';
+
 enum MessageStatus {
   messageStatusFailed, // 消息发送失败
   messageStatusSent, // 已发送
@@ -17,6 +19,7 @@ enum MessageType {
 }
 
 class Message {
+  String? id; // id
   String sender; // 发送者
   String receiver; // 接收者
   String content; // 消息内容
@@ -31,7 +34,8 @@ class Message {
     required this.createdAt,
     this.state = MessageStatus.messageStatusSent,
     this.type = MessageType.messageTypeText,
-  });
+    String? id,
+  }) : id = id ?? const Uuid().v4();
 
   // 辅助方法：将整数类型的枚举值转换为对应的枚举类型
   static T enumFromString<T>(Iterable<T> values, String valueStr) {
@@ -44,6 +48,7 @@ class Message {
   // 反序列化方法
   factory Message.fromJson(Map<String, dynamic> json) {
     return Message(
+      id: json['id'],
       sender: json['sender'],
       receiver: json['receiver'],
       content: json['content'],
@@ -55,6 +60,7 @@ class Message {
 
   // 序列化方法
   Map<String, dynamic> toJson() => {
+        'id': id,
         'sender': sender,
         'receiver': receiver,
         'content': content,
