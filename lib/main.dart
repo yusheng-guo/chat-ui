@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import 'package:get/get.dart';
+import 'package:talk/services/ws.dart';
 import 'package:talk/theme.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:talk/ui/screens/home/home.dart';
@@ -20,8 +21,11 @@ import 'package:talk/ui/screens/home/home.dart';
 // }
 
 Future<void> main() async {
+  final controller = Get.put(WebSocketController());
+
   WidgetsFlutterBinding.ensureInitialized();
   // loadMyFont(); // 加载字体
+
   runApp(const MyApp());
 }
 
@@ -43,6 +47,8 @@ class MyApp extends StatelessWidget {
       // home: const OnBoarding(),
       home: const HomePage(),
       // home: Expanded(child: ChatViewWidget()),
+      // home: ChatPage(d: null,),
+      // home: WSChatPage(),
     );
   }
 }

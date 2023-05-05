@@ -2,7 +2,7 @@ import 'package:talk/models/session.dart';
 
 List<Session> dialogs = [
   Session(
-    id: "1e31ba81-07fd-4afb-9e38-fb19f0638c34",
+    id: "e80c0552-3027-414c-b208-4031fe730f3d",
     name: "孙悟空",
     text: "Awesome Setup",
     image: "assets/avatar1.png",
