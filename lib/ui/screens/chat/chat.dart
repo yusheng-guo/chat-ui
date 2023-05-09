@@ -60,9 +60,8 @@ class _ChatPageState extends State<ChatPage> {
       sender: myid,
       receiver: widget.d.id,
       content: text,
-      createdAt: DateTime.now(),
+      createdAt: DateTime.now().millisecondsSinceEpoch,
     );
-
     // 消息发送到服务器
     _webSocketController.sendMessage(msg);
     // 消息存储到本地数据库

@@ -23,7 +23,7 @@ class Message {
   String content; // 消息内容
   MessageStatus state; // 消息状态
   MessageType type; // 消息类型
-  DateTime createdAt; // 创建时间
+  int createdAt; // 创建时间
 
   Message({
     required this.id,
@@ -107,7 +107,8 @@ class Message {
       sender: json['sender'],
       receiver: json['receiver'],
       content: json['content'],
-      createdAt: DateTime.parse(json['created_at']),
+      // createdAt: DateTime.parse(json['created_at']),
+      createdAt: json['created_at'],
       state: enumstate,
       type: enumtype,
     );
@@ -137,7 +138,7 @@ class Message {
         'content': content,
         'state': state2IntMap[state],
         'type': type2IntMap[type],
-        'createdAt': createdAt.toIso8601String(),
+        'created_at': createdAt,
       };
 
   // 将服务器发送给客户端的 JSON 数据反序列化为 Message 对象

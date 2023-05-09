@@ -42,6 +42,7 @@ class WebSocketController extends GetxController {
   // 发送消息
   void sendMessage(Message message) {
     final json = jsonEncode(message.toJson()); // 将消息对象转换为JSON格式
+    print(json);
     _channel.sink.add(json); // 发送消息到服务器端
     // _messages.add(message); // 将Message对象添加到消息列表
     // messagesRx.value = _messages; // 更新消息列表
