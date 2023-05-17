@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:talk/models/session.dart';
 
 List<Session> dialogs = [
